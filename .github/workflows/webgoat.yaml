@@ -1,0 +1,37 @@
+name: Web Goat workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # You can change this to the Java version you need
+
+    - name: Build with Maven
+      run: |
+        mvn clean install
+
+    - name: Run tests
+      run: |
+        mvn test
+
+
+# jobs:
+#   hello:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
