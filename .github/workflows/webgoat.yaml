@@ -4,10 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
-
+      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,10 +25,3 @@ jobs:
     - name: Run tests
       run: |
         mvn test
-
-
-# jobs:
-#   hello:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
