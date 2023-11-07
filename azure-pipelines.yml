@@ -16,6 +16,8 @@ steps:
 - script: |
     sudo apt update
     sudo apt install -y openjdk-17-jdk
+    java -version
+  displayName: 'Install Java 17'
 
 - script: |
     cd webgoat
