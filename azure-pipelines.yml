@@ -1,19 +1,14 @@
 trigger:
-  branches:
-    exclude:
-      - '*'
+- '*'
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-latest'  # You can choose the appropriate agent image
 
 steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.x'
-    addToPath: true
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3'  # Use the desired Python version
 
-- task: GitHubActions@0
-  inputs:
-    connectionName: 'ruifilipetmota.WebGoat'
-    repositoryName: 'WebGoat'
-    workflowName: 'build.yml'
+  - script: |
+      git clone https://github.com/ruifilipetmota/WebGoat
+    displayName: 'Clone WebGoat repository'
