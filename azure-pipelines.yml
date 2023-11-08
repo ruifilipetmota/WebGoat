@@ -22,15 +22,15 @@ steps:
     java -version
   displayName: 'Install Java 17'
 
-  - script: |
-      # Cache Maven packages
-      mvn --no-transfer-progress verify
-    displayName: 'Cache Maven packages'
-
-  - script: |
-      # Build and compile your WebGoat project using Apache Maven
-      mvn clean install -Pwebgoat-server
-    displayName: 'Build and Compile WebGoat with Maven'
+- script: |
+    # Cache Maven packages
+    mvn --no-transfer-progress verify
+  displayName: 'Cache Maven packages'
+  
+- script: |
+    # Build and compile your WebGoat project using Apache Maven
+    mvn clean install -Pwebgoat-server
+  displayName: 'Build and Compile WebGoat with Maven'
 
 - script: |
     # Install PMD
