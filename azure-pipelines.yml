@@ -22,9 +22,15 @@ steps:
     java -version
   displayName: 'Install Java 17'
 
-- script: |
-    ./mvnw clean install
-  displayName: 'Build and Compile WebGoat with maven'
+  - script: |
+      # Cache Maven packages
+      mvn --no-transfer-progress verify
+    displayName: 'Cache Maven packages'
+
+  - script: |
+      # Build and compile your WebGoat project using Apache Maven
+      mvn clean install -Pwebgoat-server
+    displayName: 'Build and Compile WebGoat with Maven'
 
 - script: |
     # Install PMD
@@ -34,4 +40,6 @@ steps:
     # Run PMD analysis
     ./pmd-bin-6.22.0/bin/run.sh pmd -d src/main/java -f text -R rulesets/java/quickstart.xml
   displayName: 'Run PMD analysis'
+
+
 
