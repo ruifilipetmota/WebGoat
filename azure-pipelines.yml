@@ -23,9 +23,8 @@ steps:
   displayName: 'Install Java 17'
 
 - script: |
-    # Build and compile your WebGoat project using Gradle
-    ./gradlew clean build
-  displayName: 'Build and Compile WebGoat with Gradle'
+    ./mvnw clean install
+  displayName: 'Build and Compile WebGoat with maven'
 
 - script: |
     # Install PMD
