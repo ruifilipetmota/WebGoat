@@ -25,7 +25,7 @@ steps:
 - script: |
     cd webgoat
     # Build and compile your WebGoat project using Apache Maven
-    mvnw install -f "pom.xml"
+    mvn install -f "pom.xml"
   displayName: 'Build and Compile WebGoat with Maven'
 
 - script: |
