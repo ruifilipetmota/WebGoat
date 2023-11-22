@@ -4,23 +4,25 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'  # You can choose the appropriate agent image
 
+
+variables:
+  java.version: '17'  # Specify the desired Java version
+  python.version: '3.x'  # Specify the desired Python version
+
 steps:
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '17'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
+
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '3'  # Use the desired Python version
+    versionSpec: '$(python.version)'
 
 - script: |
     git clone https://github.com/ruifilipetmota/webgoat.git
   displayName: 'Clone WebGoat repository'
-
-- script: |
-    sudo apt update
-    sudo apt install -y openjdk-18-jdk
-    tar -xzvf zulu17.28.13-ca-jdk18.0.0-linux_amd64.tar.gz -C /usr/lib/jvm
-    sudo update-alternatives --set java /usr/lib/jvm/java-18-openjdk-amd64/bin/java
-    sudo update-alternatives --set javac /usr/lib/jvm/java-18-openjdk-amd64/bin/javac
-    java -version
-  displayName: 'Install Java 18'
 
 - script: |
     cd webgoat
