@@ -38,7 +38,7 @@ public class VulnerableTaskHolder implements Serializable {
 
   /**
    * Execute a task when de-serializing a saved or received object.
-   * object 2 just to commit.
+   * object
    * @author stupid develop
    */
   private void readObject(ObjectInputStream stream) throws Exception {
