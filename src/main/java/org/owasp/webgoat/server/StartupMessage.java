@@ -15,7 +15,6 @@ public class StartupMessage {
 
   private String port;
   private String address;
-  private String address;
     
   @EventListener
   void onStartup(ApplicationReadyEvent event) {
