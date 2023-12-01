@@ -29,6 +29,7 @@ steps:
     # Build and compile your WebGoat project using Apache Maven
     mvn compile -f "pom.xml"
   displayName: 'Build and Compile WebGoat with Maven'
+  failOnStderr: true
 
 - script: |
     # Install PMD
