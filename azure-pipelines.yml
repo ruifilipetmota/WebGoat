@@ -43,4 +43,4 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     artifactName: 'pmd-report'
-    targetPath: '$(System.DefaultWorkingDirectory)/target/site'
+    targetPath: '$(System.DefaultWorkingDirectory)/target'
