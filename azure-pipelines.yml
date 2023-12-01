@@ -32,9 +32,10 @@ steps:
 
 - script: |
     # Install PMD
-    wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.22.0/pmd-bin-6.22.0.zip
-    unzip pmd-bin-6.22.0.zip
+    #wget https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.22.0/pmd-bin-6.22.0.zip
+    #unzip pmd-bin-6.22.0.zip
 
     # Run PMD analysis
-    ./pmd-bin-6.22.0/bin/run.sh pmd -d src/main/java -f text -R rulesets/java/quickstart.xml --failOnViolation false
+    #./pmd-bin-6.22.0/bin/run.sh pmd -d src/main/java -f text -R rulesets/java/quickstart.xml --failOnViolation false
+    mvn pmd:pmd
   displayName: 'Run PMD analysis'
