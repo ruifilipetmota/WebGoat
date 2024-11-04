@@ -11,12 +11,6 @@ on:
 
 jobs:
     pr-build:
-        if: >
-            github.event_name == 'pull_request' && !github.event.pull_request.draft && (
-              github.event.action == 'opened' ||
-              github.event.action == 'reopened' ||
-              github.event.action == 'synchronize' 
-            )
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
@@ -61,3 +55,12 @@ jobs:
                     push: false
                     build-args: |
                         webgoat_version=${{ env.WEBGOAT_MAVEN_VERSION }} 
+
+            -   name: run docker
+                run: docker run -p 127.0.0.1:3000:3000 webgoat/webgoat-desktop
+                  
+                  
+            -   name: ZAP Scan
+                uses: zaproxy/action-full-scan@v0.11.0
+                with:
+                    target: 'http://localhost:3000/'

@@ -1,4 +1,4 @@
-name: "Pull requests build"
+name: "Pull requests build temp"
 on:
     pull_request:
         paths-ignore:
@@ -56,10 +56,10 @@ jobs:
                         webgoat_version=${{ env.WEBGOAT_MAVEN_VERSION }} 
             
             -   name: run docker
-                run: docker-compose up
+                run: docker run -p 127.0.0.1:3000:3000 webgoat/webgoat-desktop
                   
                   
             -   name: ZAP Scan
                 uses: zaproxy/action-full-scan@v0.11.0
                 with:
-                    target: 'http://localhost:8080/'
+                    target: 'http://localhost:3000/'
