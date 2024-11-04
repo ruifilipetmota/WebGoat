@@ -5,6 +5,7 @@ on:
             - '.txt'
             - 'LICENSE'
             - 'docs/**'
+    workflow_dispatch:
 
 jobs:
     pr-build:
